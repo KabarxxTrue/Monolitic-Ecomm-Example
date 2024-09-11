@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.config;
+package com.kabarxx.store_example.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
