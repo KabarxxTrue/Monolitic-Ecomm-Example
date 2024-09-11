@@ -6,7 +6,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -35,14 +34,21 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public Claims getUsernameFromToken(String token) {
+    public String getUsernameFromToken(String token) {
         SecretKey secretKey = getSecretKey();
 
-        return Jwts.parserBuilder()
+        Claims claims = Jwts.parserBuilder()
                 .setSigningKey(secretKey)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+
+        return claims.getSubject();
+    }
+
+    public boolean validateToken(String token, CustomUserDetails customUserDetails) {
+        String username = getUsernameFromToken(token);
+        return username.equals(customUserDetails.getUsername()) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
