@@ -1,10 +1,12 @@
 package com.kabarxx.store_example.security.jwt;
 
 import com.kabarxx.store_example.domain.User;
+import com.kabarxx.store_example.security.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -43,5 +45,15 @@ public class JwtTokenUtil {
                 .getBody();
     }
 
+    private boolean isTokenExpired(String token) {
+        SecretKey secretKey = getSecretKey();
 
+        Date expiration = Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getExpiration();
+        return expiration.before(new Date());
+    }
 }
