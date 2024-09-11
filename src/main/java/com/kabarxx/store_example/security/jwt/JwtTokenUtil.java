@@ -42,7 +42,6 @@ public class JwtTokenUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-
         return claims.getSubject();
     }
 
