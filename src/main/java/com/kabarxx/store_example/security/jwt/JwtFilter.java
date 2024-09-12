@@ -52,6 +52,7 @@ public class JwtFilter extends UsernamePasswordAuthenticationFilter {
                 // TODO
             }
 
-        chain.doFilter(req, res);
+            chain.doFilter(req, res);
+        }
     }
 }
