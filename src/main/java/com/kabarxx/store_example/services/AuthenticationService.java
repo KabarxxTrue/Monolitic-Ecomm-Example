@@ -6,7 +6,6 @@ import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
 import com.kabarxx.store_example.repositories.UserRepository;
 import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.security.jwt.JwtService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
