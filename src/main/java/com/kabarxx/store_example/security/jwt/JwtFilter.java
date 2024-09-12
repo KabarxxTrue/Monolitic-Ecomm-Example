@@ -1,6 +1,5 @@
 package com.kabarxx.store_example.security.jwt;
 
-import com.kabarxx.store_example.domain.User;
 import com.kabarxx.store_example.security.CustomUserDetails;
 import com.kabarxx.store_example.security.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
@@ -13,16 +12,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class JwtFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final String secret;
+    private final String secret = "RINAZARETSKAYAMOYALUBOVNAVCUJIZN";
     private final CustomUserDetailsService customUserDetailsService;
 
-    public JwtFilter(String secret, CustomUserDetailsService customUserDetailsService) {
-        this.secret = secret;
+    public JwtFilter(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
     }
 
