@@ -1,5 +1,6 @@
 package com.kabarxx.store_example.security.jwt;
 
+import com.kabarxx.store_example.services.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
