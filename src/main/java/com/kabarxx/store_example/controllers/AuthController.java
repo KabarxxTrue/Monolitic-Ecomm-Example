@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.controllers;
 
-import com.kabarxx.store_example.domain.dto.authentication.SignInRequest;
-import com.kabarxx.store_example.domain.dto.authentication.SignUpRequest;
+import com.kabarxx.store_example.security.authentication.SignInRequest;
+import com.kabarxx.store_example.security.authentication.SignUpRequest;
 import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.services.AuthenticationService;
 import jakarta.validation.Valid;

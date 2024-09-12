@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.domain.dto.authentication;
+package com.kabarxx.store_example.security.authentication;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

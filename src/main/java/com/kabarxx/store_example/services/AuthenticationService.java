@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.dto.authentication.SignInRequest;
-import com.kabarxx.store_example.domain.dto.authentication.SignUpRequest;
+import com.kabarxx.store_example.security.authentication.SignInRequest;
+import com.kabarxx.store_example.security.authentication.SignUpRequest;
 import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
 import com.kabarxx.store_example.exceptions.authentication.AuthenticationException;
 import com.kabarxx.store_example.exceptions.authentication.UserAlreadyExistsException;
