@@ -5,24 +5,36 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cart")
-public class Cart {
+@Data
+@Entity
+@Table(name = "product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Column(name = "image")
+    private String imageUrl;
+
+    @Column(name = "stock")
+    private int stock;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -30,7 +42,7 @@ public class Cart {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product")
     private List<CartItem> cartItems = new ArrayList<>();
 
     @PrePersist
