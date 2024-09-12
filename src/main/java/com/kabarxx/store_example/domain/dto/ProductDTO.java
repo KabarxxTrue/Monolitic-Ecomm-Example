@@ -1,4 +1,4 @@
 package com.kabarxx.store_example.domain.dto;
 
-public class CartDTO {
+public class ProductDTO {
 }
