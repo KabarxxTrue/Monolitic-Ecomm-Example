@@ -3,8 +3,10 @@ package com.kabarxx.store_example.services;
 import com.kabarxx.store_example.domain.dto.user.SignInRequest;
 import com.kabarxx.store_example.domain.dto.user.SignUpRequest;
 import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
+import com.kabarxx.store_example.repositories.UserRepository;
 import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.security.jwt.JwtService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
 
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
 
@@ -28,6 +31,8 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(UserRolesEnum.USER)
                 .build();
+
+        userRepository.save(user);
 
         var jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);

@@ -2,8 +2,10 @@ package com.kabarxx.store_example.domain;
 
 import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,11 +17,14 @@ import java.util.List;
 @Data
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "User_")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "username")
@@ -44,20 +49,15 @@ public class User implements UserDetails {
     @Column(name = "role")
     private UserRolesEnum role;
 
-    public User() {}
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
 
-    public User(Long id, String username, String password,
-                String email, String imageUrl,
-                LocalDateTime createdAt, LocalDateTime updatedAt,
-                UserRolesEnum role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.imageUrl = imageUrl;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.role = role;
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
     @Override
