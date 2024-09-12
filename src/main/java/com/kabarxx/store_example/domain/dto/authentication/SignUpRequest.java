@@ -1,11 +1,9 @@
-package com.kabarxx.store_example.domain.dto.user;
+package com.kabarxx.store_example.domain.dto.authentication;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Data
 @Builder
