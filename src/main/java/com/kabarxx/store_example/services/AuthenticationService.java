@@ -3,6 +3,8 @@ package com.kabarxx.store_example.services;
 import com.kabarxx.store_example.domain.dto.user.SignInRequest;
 import com.kabarxx.store_example.domain.dto.user.SignUpRequest;
 import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
+import com.kabarxx.store_example.exceptions.AuthenticationException;
+import com.kabarxx.store_example.exceptions.UserAlreadyExistsException;
 import com.kabarxx.store_example.repositories.UserRepository;
 import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.security.jwt.JwtService;
@@ -24,6 +26,12 @@ public class AuthenticationService {
 
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
 
+        if (userRepository.existsByUsername(request.getUsername()))
+            throw new RuntimeException("Username is already taken.");
+
+        if (userRepository.existsByEmail(request.getEmail()))
+            throw new UserAlreadyExistsException("Email is already taken");
+
         var user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -38,10 +46,15 @@ public class AuthenticationService {
     }
 
     public JwtAuthenticationResponse signIn(SignInRequest request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                request.getUsername(),
-                request.getPassword()
-        ));
+
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                    request.getUsername(),
+                    request.getPassword()
+            ));
+        } catch (AuthenticationException e) {
+            throw new RuntimeException("Invalid username or password.");
+        }
 
         var user = userService
                 .userDetailsService()
