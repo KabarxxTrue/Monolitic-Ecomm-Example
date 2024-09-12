@@ -34,6 +34,9 @@ public class OrderItem {
     @Column(name = "price")
     private BigDecimal price;
 
+    @Column(name = "total_price")
+    private BigDecimal totalPrice;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
