@@ -1,6 +1,6 @@
 package com.kabarxx.store_example.domain;
 
-import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
+import com.kabarxx.store_example.domain.enumerations.UserRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,7 +47,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private UserRolesEnum role;
+    private UserRoles role;
 
     @PrePersist
     protected void onCreate() {

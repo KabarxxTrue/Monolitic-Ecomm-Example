@@ -2,7 +2,7 @@ package com.kabarxx.store_example.services;
 
 import com.kabarxx.store_example.security.authentication.SignInRequest;
 import com.kabarxx.store_example.security.authentication.SignUpRequest;
-import com.kabarxx.store_example.domain.enumerations.UserRolesEnum;
+import com.kabarxx.store_example.domain.enumerations.UserRoles;
 import com.kabarxx.store_example.exceptions.authentication.AuthenticationException;
 import com.kabarxx.store_example.exceptions.authentication.UserAlreadyExistsException;
 import com.kabarxx.store_example.repositories.UserRepository;
@@ -36,7 +36,7 @@ public class AuthenticationService {
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(UserRolesEnum.USER)
+                .role(UserRoles.USER)
                 .build();
 
         userRepository.save(user);
