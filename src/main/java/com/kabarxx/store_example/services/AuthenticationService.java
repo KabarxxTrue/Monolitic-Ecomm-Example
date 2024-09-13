@@ -6,10 +6,10 @@ import com.kabarxx.store_example.domain.enumerations.UserRoles;
 import com.kabarxx.store_example.exceptions.authentication.AuthenticationException;
 import com.kabarxx.store_example.exceptions.authentication.UserAlreadyExistsException;
 import com.kabarxx.store_example.repositories.UserRepository;
-import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import com.kabarxx.store_example.domain.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +24,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
 
-    public JwtAuthenticationResponse signUp(SignUpRequest request) {
+    public String signUp(SignUpRequest request) {
 
         if (userRepository.existsByUsername(request.getUsername()))
             throw new RuntimeException("Username is already taken.");
@@ -41,11 +41,10 @@ public class AuthenticationService {
 
         userRepository.save(user);
 
-        var jwt = jwtService.generateToken(user);
-        return new JwtAuthenticationResponse(jwt);
+        return jwtService.generateToken(user);
     }
 
-    public JwtAuthenticationResponse signIn(SignInRequest request) {
+    public String signIn(SignInRequest request) {
 
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -53,14 +52,13 @@ public class AuthenticationService {
                     request.getPassword()
             ));
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Invalid username or password.");
+            throw new BadCredentialsException("Invalid username or password.");
         }
 
         var user = userService
                 .userDetailsService()
                 .loadUserByUsername(request.getUsername());
 
-        var jwt = jwtService.generateToken(user);
-        return new JwtAuthenticationResponse(jwt);
+        return jwtService.generateToken(user);
     }
 }

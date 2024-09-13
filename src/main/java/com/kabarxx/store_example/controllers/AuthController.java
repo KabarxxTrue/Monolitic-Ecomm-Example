@@ -2,7 +2,6 @@ package com.kabarxx.store_example.controllers;
 
 import com.kabarxx.store_example.security.authentication.SignInRequest;
 import com.kabarxx.store_example.security.authentication.SignUpRequest;
-import com.kabarxx.store_example.security.jwt.JwtAuthenticationResponse;
 import com.kabarxx.store_example.services.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +18,12 @@ public class AuthController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/sign-up")
-    public JwtAuthenticationResponse signUp(@RequestBody @Valid SignUpRequest request) {
+    public String signUp(@RequestBody @Valid SignUpRequest request) {
         return authenticationService.signUp(request);
     }
 
     @PostMapping("/sign-in")
-    public JwtAuthenticationResponse signIn(@RequestBody @Valid SignInRequest request) {
+    public String signIn(@RequestBody @Valid SignInRequest request) {
         return authenticationService.signIn(request);
     }
 }
