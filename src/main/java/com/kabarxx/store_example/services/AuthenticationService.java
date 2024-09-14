@@ -44,14 +44,11 @@ public class AuthenticationService {
         if (userRepository.existsByEmail(request.getEmail()))
             throw new UserAlreadyExistsException("Email is already taken");
 
-        var user = new User() {
-            {
-                setUsername(request.getUsername());
-                setEmail(request.getEmail());
-                setPassword(passwordEncoder.encode(request.getPassword()));
-                setRole(UserRoles.USER);
-            }
-        };
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(UserRoles.USER);
 
         userRepository.save(user);
 
