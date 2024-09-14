@@ -4,7 +4,7 @@ import com.kabarxx.store_example.domain.Order;
 import com.kabarxx.store_example.domain.dto.OrderDTO;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface OrderMapper {
     Order toEntity(OrderDTO orderDTO);
     OrderDTO toDTO(Order order);
