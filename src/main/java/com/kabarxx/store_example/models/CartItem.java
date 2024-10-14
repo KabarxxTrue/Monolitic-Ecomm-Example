@@ -1,39 +1,35 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
-import com.kabarxx.store_example.domain.enumerations.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Order")
-public class Order {
-
+@Table(name = "CartItem")
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
-    @Enumerated(EnumType.STRING)
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
+    @ManyToOne
+    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    private Cart cart;
 
-    @Column(name = "total_price")
-    private BigDecimal totalPrice;
+    @Column(name = "price")
+    private BigDecimal price;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private OrderStatus status;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -60,36 +56,36 @@ public class Order {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public LocalDateTime getCreatedAt() {

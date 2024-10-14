@@ -1,6 +1,6 @@
 package com.kabarxx.store_example.security.jwt;
 
-import com.kabarxx.store_example.domain.User;
+import com.kabarxx.store_example.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

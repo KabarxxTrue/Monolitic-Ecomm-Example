@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.domain.enumerations;
+package com.kabarxx.store_example.domain;
 
 public enum OrderStatus {
     PENDING,

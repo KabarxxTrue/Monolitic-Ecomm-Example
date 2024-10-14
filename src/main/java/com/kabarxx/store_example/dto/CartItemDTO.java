@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.domain.dto;
+package com.kabarxx.store_example.dto;
 
 public class CartItemDTO {
     private Long productId;

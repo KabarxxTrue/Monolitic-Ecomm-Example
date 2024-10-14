@@ -1,16 +1,19 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
+import com.kabarxx.store_example.domain.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "likedproduct")
-public class LikedProduct {
+@Table(name = "Order")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +24,16 @@ public class LikedProduct {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @Enumerated(EnumType.STRING)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
+
+    @Column(name = "total_price")
+    private BigDecimal totalPrice;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private OrderStatus status;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -58,12 +68,28 @@ public class LikedProduct {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     public LocalDateTime getCreatedAt() {

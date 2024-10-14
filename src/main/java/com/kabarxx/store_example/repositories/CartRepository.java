@@ -1,6 +1,6 @@
 package com.kabarxx.store_example.repositories;
 
-import com.kabarxx.store_example.domain.Cart;
+import com.kabarxx.store_example.models.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,10 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.Cart;
-import com.kabarxx.store_example.domain.CartItem;
-import com.kabarxx.store_example.domain.Product;
-import com.kabarxx.store_example.domain.dto.CartDTO;
-import com.kabarxx.store_example.domain.dto.CartItemDTO;
+import com.kabarxx.store_example.models.Cart;
+import com.kabarxx.store_example.models.CartItem;
+import com.kabarxx.store_example.models.Product;
+import com.kabarxx.store_example.dto.CartDTO;
+import com.kabarxx.store_example.dto.CartItemDTO;
 import com.kabarxx.store_example.mappers.CartMapper;
 import com.kabarxx.store_example.repositories.CartRepository;
 import com.kabarxx.store_example.repositories.ProductRepository;
@@ -57,7 +57,7 @@ public class CartService {
 
     public CartDTO removeItemFromCart(Long userId, Long productId) {
         Cart cart = cartRepository.findCartByUserId(userId)
-                .orElseThrow(() -> new RuntimeException("Cart not found for user with id: + userId"));
+                .orElseThrow(() -> new RuntimeException("Cart not found for user with userid " + userId));
 
         Optional<CartItem> cartItemOptional = cart.getItems().stream()
                 .filter(item -> item.getProduct().getId().equals(productId))

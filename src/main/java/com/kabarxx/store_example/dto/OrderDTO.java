@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.domain.dto;
+package com.kabarxx.store_example.dto;
 
 import java.math.BigDecimal;
 import java.util.List;

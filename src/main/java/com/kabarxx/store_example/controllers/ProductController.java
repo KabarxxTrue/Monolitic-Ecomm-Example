@@ -1,6 +1,6 @@
 package com.kabarxx.store_example.controllers;
 
-import com.kabarxx.store_example.domain.dto.ProductDTO;
+import com.kabarxx.store_example.dto.ProductDTO;
 import com.kabarxx.store_example.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

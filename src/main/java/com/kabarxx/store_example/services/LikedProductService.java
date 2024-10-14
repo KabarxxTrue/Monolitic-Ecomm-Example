@@ -1,9 +1,9 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.LikedProduct;
-import com.kabarxx.store_example.domain.Product;
-import com.kabarxx.store_example.domain.User;
-import com.kabarxx.store_example.domain.dto.LikedProductDTO;
+import com.kabarxx.store_example.models.LikedProduct;
+import com.kabarxx.store_example.models.Product;
+import com.kabarxx.store_example.models.User;
+import com.kabarxx.store_example.dto.LikedProductDTO;
 import com.kabarxx.store_example.mappers.LikedProductMapper;
 import com.kabarxx.store_example.repositories.LikedProductRepository;
 import com.kabarxx.store_example.repositories.ProductRepository;

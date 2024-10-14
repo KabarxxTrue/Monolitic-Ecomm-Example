@@ -1,11 +1,11 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.Order;
-import com.kabarxx.store_example.domain.OrderItem;
-import com.kabarxx.store_example.domain.Product;
-import com.kabarxx.store_example.domain.User;
-import com.kabarxx.store_example.domain.dto.OrderDTO;
-import com.kabarxx.store_example.domain.enumerations.OrderStatus;
+import com.kabarxx.store_example.models.Order;
+import com.kabarxx.store_example.models.OrderItem;
+import com.kabarxx.store_example.models.Product;
+import com.kabarxx.store_example.models.User;
+import com.kabarxx.store_example.dto.OrderDTO;
+import com.kabarxx.store_example.domain.OrderStatus;
 import com.kabarxx.store_example.mappers.OrderMapper;
 import com.kabarxx.store_example.repositories.OrderItemRepository;
 import com.kabarxx.store_example.repositories.OrderRepository;

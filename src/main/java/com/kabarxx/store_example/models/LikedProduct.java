@@ -1,34 +1,29 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cart")
-public class Cart {
+@AllArgsConstructor
+@Entity
+@Table(name = "likedproduct")
+public class LikedProduct {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    private List<CartItem> items;
-
-    @Column(name = "total_price")
-    @NotNull
-    private BigDecimal totalPrice;
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -63,20 +58,12 @@ public class Cart {
         this.user = user;
     }
 
-    public List<CartItem> getItems() {
-        return items;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setItems(List<CartItem> items) {
-        this.items = items;
-    }
-
-    public @NotNull BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(@NotNull BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public LocalDateTime getCreatedAt() {

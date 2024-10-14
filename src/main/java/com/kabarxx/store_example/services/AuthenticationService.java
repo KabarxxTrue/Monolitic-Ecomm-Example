@@ -2,17 +2,16 @@ package com.kabarxx.store_example.services;
 
 import com.kabarxx.store_example.security.authentication.SignInRequest;
 import com.kabarxx.store_example.security.authentication.SignUpRequest;
-import com.kabarxx.store_example.domain.enumerations.UserRoles;
+import com.kabarxx.store_example.domain.UserRoles;
 import com.kabarxx.store_example.exceptions.authentication.AuthenticationException;
 import com.kabarxx.store_example.exceptions.authentication.UserAlreadyExistsException;
 import com.kabarxx.store_example.repositories.UserRepository;
 import com.kabarxx.store_example.security.jwt.JwtService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import com.kabarxx.store_example.domain.User;
+import com.kabarxx.store_example.models.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,6 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
     }
-
 
     public String signUp(SignUpRequest request) {
 

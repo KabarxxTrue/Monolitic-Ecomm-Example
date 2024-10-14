@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,40 +6,42 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "OrderItem")
-public class OrderItem {
-
+@Table(name = "product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    @Column(name = "name")
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
-
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "total_price")
-    private BigDecimal totalPrice;
+    @Column(name = "image")
+    private String imageUrl;
+
+    @Column(name = "stock")
+    private int stock;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> cartItems = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
@@ -60,28 +62,20 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
+    public String getName() {
+        return name;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public BigDecimal getPrice() {
@@ -92,12 +86,20 @@ public class OrderItem {
         this.price = price;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -114,5 +116,13 @@ public class OrderItem {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 }

@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.Product;
-import com.kabarxx.store_example.domain.dto.ProductDTO;
+import com.kabarxx.store_example.models.Product;
+import com.kabarxx.store_example.dto.ProductDTO;
 import com.kabarxx.store_example.exceptions.product.ProductNotFoundException;
 import com.kabarxx.store_example.mappers.ProductMapper;
 import com.kabarxx.store_example.repositories.ProductRepository;

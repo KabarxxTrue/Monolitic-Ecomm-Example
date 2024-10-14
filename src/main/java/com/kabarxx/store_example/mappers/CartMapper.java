@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.mappers;
 
-import com.kabarxx.store_example.domain.Cart;
-import com.kabarxx.store_example.domain.dto.CartDTO;
+import com.kabarxx.store_example.models.Cart;
+import com.kabarxx.store_example.dto.CartDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

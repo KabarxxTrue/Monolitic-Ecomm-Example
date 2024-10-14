@@ -1,6 +1,6 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
-import com.kabarxx.store_example.domain.enumerations.UserRoles;
+import com.kabarxx.store_example.domain.UserRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

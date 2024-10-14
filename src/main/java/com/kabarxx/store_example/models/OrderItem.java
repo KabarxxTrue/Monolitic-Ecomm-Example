@@ -1,8 +1,7 @@
-package com.kabarxx.store_example.domain;
+package com.kabarxx.store_example.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
@@ -11,26 +10,30 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CartItem")
-public class CartItem {
+@Table(name = "OrderItem")
+public class OrderItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
-    private Cart cart;
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "total_price")
+    private BigDecimal totalPrice;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -57,6 +60,14 @@ public class CartItem {
         this.id = id;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -65,12 +76,12 @@ public class CartItem {
         this.product = product;
     }
 
-    public Cart getCart() {
-        return cart;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public BigDecimal getPrice() {
@@ -81,12 +92,12 @@ public class CartItem {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public LocalDateTime getCreatedAt() {

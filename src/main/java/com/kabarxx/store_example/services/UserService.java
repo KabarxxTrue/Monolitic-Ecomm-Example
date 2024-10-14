@@ -1,8 +1,7 @@
 package com.kabarxx.store_example.services;
 
-import com.kabarxx.store_example.domain.User;
+import com.kabarxx.store_example.models.User;
 import com.kabarxx.store_example.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
