@@ -2,7 +2,7 @@ package com.kabarxx.store_example.controllers;
 
 import com.kabarxx.store_example.security.authentication.SignInRequest;
 import com.kabarxx.store_example.security.authentication.SignUpRequest;
-import com.kabarxx.store_example.services.AuthenticationService;
+import com.kabarxx.store_example.domain.services.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.services;
+package com.kabarxx.store_example.domain.services;
 
 import com.kabarxx.store_example.models.User;
 import com.kabarxx.store_example.repositories.UserRepository;

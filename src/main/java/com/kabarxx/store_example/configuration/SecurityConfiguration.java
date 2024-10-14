@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.configuration;
 
 import com.kabarxx.store_example.security.jwt.JwtAuthenticationFilter;
-import com.kabarxx.store_example.services.UserService;
+import com.kabarxx.store_example.domain.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.controllers;
 
 import com.kabarxx.store_example.dto.LikedProductDTO;
-import com.kabarxx.store_example.services.LikedProductService;
+import com.kabarxx.store_example.domain.services.LikedProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

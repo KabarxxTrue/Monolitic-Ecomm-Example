@@ -2,7 +2,7 @@ package com.kabarxx.store_example.controllers;
 
 import com.kabarxx.store_example.dto.CartDTO;
 import com.kabarxx.store_example.dto.CartItemDTO;
-import com.kabarxx.store_example.services.CartService;
+import com.kabarxx.store_example.domain.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
