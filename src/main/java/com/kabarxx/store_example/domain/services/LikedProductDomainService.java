@@ -20,14 +20,6 @@ public class LikedProductDomainService {
         this.productRepository = productRepository;
     }
 
-    public LikedProduct likeProduct(User user, Product product) {
-        var likedProduct = new LikedProduct();
-        likedProduct.setUser(user);
-        likedProduct.setProduct(product);
-
-        return likedProduct;
-    }
-
     public LikedProduct likeProduct(Long userId, Long productId) {
         var user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));

@@ -1,6 +1,5 @@
 package com.kabarxx.store_example.application.services;
 
-import com.kabarxx.store_example.domain.models.LikedProduct;
 import com.kabarxx.store_example.application.dto.LikedProductDTO;
 import com.kabarxx.store_example.domain.services.LikedProductDomainService;
 import com.kabarxx.store_example.infrastructure.mappers.LikedProductMapper;

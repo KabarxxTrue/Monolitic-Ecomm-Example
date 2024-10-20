@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.application.services;
 
-import com.kabarxx.store_example.application.authentication.SignInRequest;
-import com.kabarxx.store_example.application.authentication.SignUpRequest;
+import com.kabarxx.store_example.application.dto.authentication.SignInRequest;
+import com.kabarxx.store_example.application.dto.authentication.SignUpRequest;
 import com.kabarxx.store_example.application.exceptions.authentication.AuthenticationException;
 import com.kabarxx.store_example.domain.services.UserDomainService;
 import com.kabarxx.store_example.infrastructure.repositories.UserRepository;

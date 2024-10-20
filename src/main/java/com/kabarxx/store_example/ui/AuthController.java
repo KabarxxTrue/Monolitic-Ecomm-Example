@@ -1,7 +1,7 @@
 package com.kabarxx.store_example.ui;
 
-import com.kabarxx.store_example.application.authentication.SignInRequest;
-import com.kabarxx.store_example.application.authentication.SignUpRequest;
+import com.kabarxx.store_example.application.dto.authentication.SignInRequest;
+import com.kabarxx.store_example.application.dto.authentication.SignUpRequest;
 import com.kabarxx.store_example.application.services.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

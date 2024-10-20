@@ -1,4 +1,4 @@
-package com.kabarxx.store_example.application.authentication;
+package com.kabarxx.store_example.application.dto.authentication;
 
 public class SignUpRequest
 {
